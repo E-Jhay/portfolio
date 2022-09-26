@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/index.js"></script>
+    <title>Portfolio</title>
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <h3>E-Jhay</h3>
+            </a>
+            <nav class="nav" data-visible="false">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#projects" class="nav__link">Projects</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about-me" class="nav__link">About</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contacts" class="nav__link">Contacts</a>
+                    </li>
+                </ul>
+            </nav>
+            <div id="toggle-nav" data-expanded="false">
+                <i class="fa-solid fa-bars" id="hamburger"></i>
+                <i class="fa-solid fa-xmark d-none" id="close-button"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero hidden" id="home">
+        <div class="container">
+            <h1 class="section__title section__title--hero">Hi, I am <span>E-Jhay Bumacod</span></h1>
+            <h2 class="section__subtitle section__subtitle--hero">Web Developer</h2>
+
+            <button class="btn btn__projects">Projects</button>
+            <button class="btn btn__resume">Resume</button>
+
+            <div class="socials">
+                <a href="linkedin.com" class="social__link"><i class="fa-brands fa-linkedin" title="linkedin"></i></a>
+                <a href="github.com" class="social__link"><i class="fa-brands fa-github" title="github"></i></a>
+                <a href="mailto:ejhaybumacod@gmail.com" class="social__link"><i class="fa-solid fa-envelope" title="ejhaybumacod@gmail.com"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects hidden" id="projects">
+        <div class="container">
+            <h2 class="section__title section__title--projects text-center">Projects</h2>
+            <p class="section__subtitle section__subtile--projects text-center">
+                Here are some of my works.
+            </p>
+                        
+            <div class="works">
+
+                <dialog class="modal" id="modal">
+                    <button id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+                </dialog>
+
+                <div class="work">
+                    <img loading="lazy" src="/img/work7.jpg" alt="" class="work-img">
+                    <div class="work__info">
+                        <h3 class="work__title">Registrar's Office RMS</h3>
+                        <ul class="stack">
+                            <li class="stack__item">Html</li>
+                            <li class="stack__item">Bootstrap</li>
+                            <li class="stack__item">CSS</li>
+                            <li class="stack__item">PHP Laravel</li>
+                            <li class="stack__item">Livewire</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="work">
+                    <img loading="lazy" src="/img/work7.jpg" alt="" class="work-img">
+                    <div class="work__info">
+                        <h3 class="work__title">Sample 2</h3>
+                        <ul class="stack">
+                            <li class="stack__item">Html</li>
+                            <li class="stack__item">Bootstrap</li>
+                            <li class="stack__item">CSS</li>
+                            <li class="stack__item">PHP Laravel</li>
+                            <li class="stack__item">Livewire</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="work">
+                    <img loading="lazy" src="/img/work7.jpg" alt="" class="work-img">
+                    <div class="work__info">
+                        <h3 class="work__title">Sample 2</h3>
+                        <ul class="stack">
+                            <li class="stack__item">Html</li>
+                            <li class="stack__item">Bootstrap</li>
+                            <li class="stack__item">CSS</li>
+                            <li class="stack__item">PHP Laravel</li>
+                            <li class="stack__item">Livewire</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="work">
+                    <img loading="lazy" src="/img/work7.jpg" alt="" class="work-img">
+                    <div class="work__info">
+                        <h3 class="work__title">Sample 1</h3>
+                        <ul class="stack">
+                            <li class="stack__item">Html</li>
+                            <li class="stack__item">Bootstrap</li>
+                            <li class="stack__item">CSS</li>
+                            <li class="stack__item">PHP Laravel</li>
+                            <li class="stack__item">Livewire</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="work">
+                    <img loading="lazy" src="/img/work7.jpg" alt="" class="work-img">
+                    <div class="work__info">
+                        <h3 class="work__title">Sample 1</h3>
+                        <ul class="stack">
+                            <li class="stack__item">Html</li>
+                            <li class="stack__item">Bootstrap</li>
+                            <li class="stack__item">CSS</li>
+                            <li class="stack__item">PHP Laravel</li>
+                            <li class="stack__item">Livewire</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABout me -->
+    <section class="about-me hidden" id="about-me">
+        <div class="container">
+            <div class="about-me__content">
+                <img src="/img/portrait.jpg" alt="A picture of ejhay" class="about-me-img">
+                <div class="about-me__content--description">
+                    <h2 class="section__title section__title--about-me">
+                        About me
+                    </h2>
+                    <p>An experienced Frontend Engineer with demonstrated skill in working in the software industry. I can do both Web and Mobile development. I want to share what I have learned working on some big companies such as Intuit, Accenture, and Google. As a passionate individual who loves to learn new things and share them with others, I love to innovate and create new things.</p>
+                    <a href="#" class="btn btn-resume">Download Resume</a>
+                </div>
+            </div>
+
+            <div class="about-me__skills">
+                <h2 class="about-me__title--skills text-center">Technologies I'm familiar with</h2>
+                <ul class="skills">
+                    <li class="skills__item"><i class="fa-brands fa-js" title="javascript"></i></li>
+                    <li class="skills__item"><i class="fa-brands fa-html5" title="html"></i></i></li>
+                    <li class="skills__item"><i class="fa-brands fa-css3-alt" title="css"></i></i></li>
+                    <li class="skills__item"><i class="fa-brands fa-bootstrap" title="bootstrap"></i></li>
+                    <li class="skills__item"><i class="fa-brands fa-php" title="php"></i></li>
+                    <li class="skills__item"><i class="fa-brands fa-laravel" title="laravel"></i></li>
+                    <li class="skills__item"><i class="fa-brands fa-react" title="react"></i></li>
+                    <li class="skills__item"><i class="fa-brands fa-node-js" title="nodejs"></i></li>
+                    <li class="skills__item"><i class="fa-brands fa-git" title="git"></i></li>
+                    <li class="skills__item"><i class="fa-brands fa-github" title="github"></i></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contacts" id="contacts">
+        <h2 class="section__title section__title--contacts text-center">Contacts</h2>
+        <div class="container">
+            <ul class="left__contact">
+                <li><h3>Call me:</h3>+63995942352<hr></li>
+                <li><h3>Email:</h3>ejhaybumacod@gmail.com<hr></li>
+            </ul>
+
+            <form action="" method="POST" class="right__contact">
+                <div class="input-group">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="yourname@gmail.com" required>
+                </div>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <textarea name="message" id="" cols="30" rows="6" placeholder="Message"></textarea>
+                <button class="btn btn-submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <section class="footer">
+        <div class="socials__footer text-center">
+            <a href="linkedin.com" class="social__link--footer"><i class="fa-brands fa-linkedin" title="linkedin"></i></a>
+            <a href="github.com" class="social__link--footer"><i class="fa-brands fa-github" title="github"></i></a>
+            <a href="mailto:ejhaybumacod@gmail.com" class="social__link--footer"><i class="fa-solid fa-envelope" title="ejhaybumacod@gmail.com"></i></a>
+        </div>
+        <p class="text-center">&copy; Copyright 2022, E-Jhay Bumacod</p>
+    </section>
+</body>
+</html>
