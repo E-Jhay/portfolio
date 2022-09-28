@@ -8,6 +8,117 @@ const navLink = document.querySelectorAll('.nav__link')
 const modal = document.querySelector('.modal')
 const work = document.querySelectorAll('.work')
 const closeModal = document.getElementById('close-modal')
+const form = document.querySelector('.right__contact')
+const fullName = document.getElementById('fullName')
+const email = document.getElementById('email')
+const subject = document.getElementById('subject')
+const message = document.getElementById('message')
+
+const toast = document.querySelector('.toast')
+let isFormValid = false
+
+// send email
+const sendEmail = () => {
+    fetch("https://formsubmit.co/ajax/aeffaa5ba583c80b1abac3f7d768fa64", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: fullName.value,
+            email: email.value,
+            subject: subject.value,
+            message: message.value,
+        })
+    });
+}
+
+// set Error message
+const setError = (element, message) => {
+    const inputControl = element.parentElement
+    const errorDisplay = inputControl.querySelector('.error-msg')
+
+    errorDisplay.innerText = message
+    inputControl.classList.add('error')
+}
+
+const isValidEmail = email => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+// validateinputs
+const validateInputs = () => {
+    const fullNameValue = fullName.value
+    const emailValue = email.value
+    const subjectValue = subject.value
+    const messageValue = message.value
+    isFormValid = true
+    if(fullNameValue === '') {
+        setError(fullName, 'Name is required')
+        isFormValid = false
+    }
+
+    if(emailValue === '') {
+        setError(email, 'Email is required')
+        isFormValid = false
+    } else if (!isValidEmail(emailValue)) {
+        setError(email, 'Provide a valid email address');
+        isFormValid = false
+    }
+
+    if (subjectValue === '') {
+        setError(subject, 'Subject is required')
+        isFormValid = false
+    }
+
+    if (messageValue === '') {
+        setError(message, 'Message is required')
+        isFormValid = false
+    }
+}
+
+// clear input fields
+const clearInputs = () => {
+    fullName.value = ''
+    email.value = ''
+    subject.value = ''
+    message.value = ''
+}
+
+// clear error messages
+const clearError = () => {
+    const errors = document.querySelectorAll('.error-msg')
+    const inputErrors = document.querySelectorAll('.error')
+
+    errors.forEach(error => {
+        error.innerText = ''
+    })
+
+    inputErrors.forEach(inputError => {
+        inputError.classList.remove('error')
+    })
+}
+
+// form submit
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    validateInputs()
+    // if form is valid send email pop up toast success message
+    if (isFormValid){
+        sendEmail()
+        toast.classList.remove('toast-hidden')
+        setTimeout(() => {
+            toast.classList.add('toast-hidden')
+        }, 1000)
+
+        clearInputs()
+        clearError()
+    }
+    
+})
+
 
 navLink.forEach(link => {
     link.addEventListener('click', () => {
@@ -28,35 +139,37 @@ navLink.forEach(link => {
 toggleNav.addEventListener('click', () => {
     const visibility = nav.getAttribute('data-visible')
     if (visibility === 'false') {
-        console.log('open')
         nav.setAttribute('data-visible', true)
         hamburger.classList.add('d-none')
         closeButton.classList.remove('d-none')
     } else {
-        console.log('close')
         nav.setAttribute('data-visible', false)
         hamburger.classList.remove('d-none')
         closeButton.classList.add('d-none')
     }
 })
 
+// list of projects
 const links = [
     {
         name: "Registrar's Office RMS",
         link: 'https://www.youtube.com/embed/ePvYdwmT4aI',
         description: 'A Record Management System for registrars office that tracks the requested documents and store it on the system. It also generate monthly and quarterly reports for the release documents from the office.',
         github: 'https://github.com/E-Jhay/registrar-rms',
-        website: ''
+        website: '',
+        timestamps: [
+            '0:01 Client side Request Document Form',
+            '0:30 Admin side (login)',
+            "0:49 Requested Document UI",
+            '1:14 Generation of Reports UI',
+            '1:43 Document Types UI',
+            '2:01 Acounts UI',
+            '2:30 Logs UI',
+        ]
     },
-    {
-        name: 'Sample 2',
-        link: 'https://www.youtube.com/embed/TAB_v6yBXIE',
-        description: 'This is Sample 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique consequatur libero deleniti? Odio ab, sequi doloremque laborum facilis unde.',
-        github: '',
-        website: ''
-    }
 ]
 
+// Add modal for every works that is click
 work.forEach((workItem) => {
     workItem.addEventListener('click', () => {
         const workTitle = workItem.querySelector('.work__title').innerText
@@ -104,25 +217,38 @@ work.forEach((workItem) => {
         }
         sourceCodeButton.setAttribute('target', '_blank')
 
+        const ul = document.createElement('ul')
+        ul.classList.add('timestamps')
+        linkItem.timestamps.forEach(timestamp => {
+            const li = document.createElement('li')
+            li.innerText = timestamp
+
+            ul.appendChild(li)
+            console.log(timestamp)
+        })
+
         modalFooter.appendChild(liveButton)
         modalFooter.appendChild(sourceCodeButton)
 
         modal.appendChild(iframe)
         modal.appendChild(h3)
         modal.appendChild(p)
+        modal.appendChild(ul)
         modal.appendChild(modalFooter)
 
         modal.showModal()
-        console.log(workTitle)
     })
 })
+// remove the modal content after closing modal
 function removeAllChildNodes(parent) {
     while (parent.children[1]) {
         parent.removeChild(parent.children[1]);
     }
 }
 
+// Close modal
 closeModal.addEventListener('click', () => {
     removeAllChildNodes(modal)
     modal.close()
 })
+

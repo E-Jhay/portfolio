@@ -80,6 +80,10 @@ i:hover {
     cursor: pointer;
 }
 
+a {
+    text-decoration: none;
+}
+
 .text-center {
     text-align: center;
 }
@@ -208,6 +212,7 @@ header .container {
 .section__subtitle--hero {
     font-size: var(--fs-h2);
     letter-spacing: 1px;
+    margin-bottom: 1em;
     /* width: fit-content;
     position: relative; */
 }
@@ -217,7 +222,6 @@ header .container {
     font-weight: var(--fw-reg);
     letter-spacing: .8px;
     text-transform: uppercase;
-    margin-top: 1.3em;
     padding: .5em .825em;
     border: none;
     border-radius: .2rem;
@@ -231,6 +235,7 @@ header .container {
 }
 
 .btn__projects {
+    display: inline-block;
     background-color: var(--clr-accent);
     color: var(--clr-light);
 }
@@ -240,6 +245,7 @@ header .container {
 }
 
 .btn__resume {
+    display: inline-block;
     background-color: #00A8CC;
     color: var(--clr-light);
     margin-left: .5em;
@@ -350,6 +356,19 @@ header .container {
     color: var(--clr-dark);
     cursor: pointer;
     position: relative;
+}
+
+.modal .timestamps {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: .8rem;
+}
+
+.modal .timestamps::before {
+    content: "Timestamp:";
+    font-size: 1rem;
+
 }
 
 .modal-footer__item:hover, .btn-resume:hover {
@@ -667,4 +686,52 @@ input, textarea {
     .section__title--about-me {
         text-align: center;
     }
+}
+
+.input-control.error input, .input-control.error textarea{
+    border: 2px solid rgb(214, 53, 53);
+}
+
+.error-msg {
+    color: rgb(214, 53, 53);
+    font-size: .8rem;
+    padding: 0;
+    margin-left: 1em;
+}
+
+.toast {
+    position: fixed;
+    top: 5em;
+    right: 2em;
+    z-index: 99999999;
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+    display: flex;
+    gap: 1.3em;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 1em;
+    border-radius: .7rem;
+    border-left: .8rem solid #509941;
+    box-shadow: var(--bs);
+}
+
+.toast-hidden {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+
+
+.toast__title, .toast__message{
+    margin: 0;
+    padding: 0;
+    font-weight: var(--fw-reg);
+}
+
+.toast i {
+    color: #509941;
+    font-size: 3rem;
+    padding: 0;
 }
